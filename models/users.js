@@ -31,14 +31,14 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
         allowNull: false,
         validate: {
-          isEmail: true, // Validator to ensure email format
+          isEmail: true,
         },
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [6, 20], // Validator to ensure password length between 6 and 20 characters
+          len: [6, 20],
         },
       },
       role_id: {
@@ -72,6 +72,10 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Users",
     }
   );
+
+  Users.prototype.CorrectPassword = async (reqPass, passDb) => {
+    return await bcrypt.compareSync(reqPass, passDb);
+  };
 
   return Users;
 };
