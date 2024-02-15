@@ -20,10 +20,6 @@ module.exports = {
       },
       {
         id: uuidv4(),
-        nama_role: "pengelola",
-      },
-      {
-        id: uuidv4(),
         nama_role: "user",
       },
     ]);
